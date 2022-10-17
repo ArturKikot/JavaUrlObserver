@@ -14,7 +14,7 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Bitte geben Sie eine URL zur Beobachtung ein");
         System.out.println("Beispiel: https://arturcode.de/index.html");
-        getUrl(false);// Try to get url from user, it will loop till user enters a valid url
+        getUrl(false);// Try to get url from user, it will loop until the user enters a valid url
     }
 
     static void getUrl(Boolean loop) {
@@ -51,9 +51,8 @@ public class Main {
                     connection.connect();
                     // receive a code which tells us about the status of the url
                     int code = connection.getResponseCode();
-                    CodeMatcher test = new CodeMatcher();
-                    writeFile(test.matchCode(code), targetUrl);
-
+                    CodeMatcher isCodeMatching = new CodeMatcher();
+                    writeFile(isCodeMatching.matchCode(code), targetUrl);
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }
@@ -65,7 +64,7 @@ public class Main {
     }
 
     static void writeFile(boolean available, String targetUrl) throws IOException {
-        //Log the current date time url and type of connection
+        //Log the current date,time,url and type of connection
         FormattedDate finalDate = new FormattedDate();
         File log = new File("Log.txt");//select the log file
         FileWriter fileWriter = new FileWriter(log, true);
