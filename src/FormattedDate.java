@@ -5,9 +5,11 @@ import java.util.Date;
 public class FormattedDate {
 
     public String getDate() {
-        //get a date and modify it to match the given format
+
         Date date = new Date();
+        //get date and modify it to match the given format
         DateFormat dateFormat = new SimpleDateFormat("dd-MMMM-yyyy");
+        //get time
         DateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
 
         String strDate = dateFormat.format(date);
@@ -15,7 +17,7 @@ public class FormattedDate {
 
         String[] split = strDate.split("-");
 
-        //shorten the month to the first tree letters and capitalize the remaining letters
+        //shorten the month to the first tree letters and capitalize the them
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < split.length; i++) {
             if (i == 1) {
